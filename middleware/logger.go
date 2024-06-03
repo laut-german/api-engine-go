@@ -37,5 +37,6 @@ func LogRequest(r *http.Request, status int) {
 	}
 
 	fmt.Printf("%s\t%d\t%s\t%v", r.Method, status, path, time.Since(start))
+	fmt.Println()
 }
 

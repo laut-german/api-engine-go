@@ -3,6 +3,7 @@ package utils
 import (
 	"encoding/json"
 	"net/http"
+	"web-engine-go/middleware"
 )
 
 func Respond(w http.ResponseWriter, r *http.Request, status int, data interface{}) error {
@@ -24,5 +25,7 @@ func Respond(w http.ResponseWriter, r *http.Request, status int, data interface{
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	w.Write(js)
+
+	middleware.LogRequest(r, status)
 	return nil
 }
